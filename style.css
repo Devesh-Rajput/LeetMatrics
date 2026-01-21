@@ -1,0 +1,272 @@
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI";
+}
+
+/* =====================================================
+   BODY – MOBILE FIRST
+===================================================== */
+body {
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    color: #e5e7eb;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 16px;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+.container {
+    width: 100%;
+    background-color: #0f172a;
+    border-radius: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.65);
+    animation: fadeIn 0.7s ease;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+h1 {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+/* =====================================================
+   USER INPUT
+===================================================== */
+.user-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.user-container p {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.user-input-container {
+    display: flex;
+    gap: 8px;
+}
+
+#user-input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #020617;
+    border: 1px solid #1f2937;
+    color: #e5e7eb;
+}
+
+#user-input:focus {
+    outline: none;
+    border-color: #38bdf8;
+    box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.25);
+}
+
+#search-btn {
+    padding: 10px 16px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #020617;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(56, 189, 248, 0.45);
+}
+
+/* =====================================================
+   PROGRESS SECTION
+===================================================== */
+.progress {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+/* =====================================================
+   PROGRESS CIRCLES
+===================================================== */
+.circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(
+        var(--circle-color) var(--progress-degree, 0%),
+        #1f2937 0%
+    );
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.9);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: float 5s ease-in-out infinite;
+}
+
+.circle:hover {
+    transform: scale(1.08);
+    box-shadow:
+        inset 0 0 14px rgba(0, 0, 0, 0.9),
+        0 10px 30px rgba(255, 255, 255, 0.15);
+}
+
+.circle span {
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.circle p {
+    font-size: 0.75rem;
+    color: #cbd5f5;
+}
+
+/* =====================================================
+   DIFFICULTY COLORS
+===================================================== */
+.easy-progress {
+    --circle-color: #22c55e;
+}
+
+.medium-progress {
+    --circle-color: #facc15;
+}
+
+.hard-progress {
+    --circle-color: #ef4444;
+}
+
+/* =====================================================
+   STATS CARDS
+===================================================== */
+.stats-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 24px; /* gap between circles and cards */
+}
+
+.stats-card {
+    background: linear-gradient(145deg, #020617, #020617);
+    padding: 16px;
+    border-radius: 14px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: float 6s ease-in-out infinite;
+}
+
+.stats-card:hover {
+    transform: translateY(-6px);
+}
+
+/* Difficulty-based glow */
+.stats-card.easy {
+    box-shadow: 0 0 18px rgba(34, 197, 94, 0.35);
+}
+
+.stats-card.medium {
+    box-shadow: 0 0 18px rgba(250, 204, 21, 0.35);
+}
+
+.stats-card.hard {
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.35);
+}
+
+.stats-card h3 {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.stats-card p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-top: 4px;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+}
+
+/* =====================================================
+   RESPONSIVE – VERY SMALL SCREENS
+===================================================== */
+@media (max-width: 400px) {
+
+    .container {
+        padding: 16px;
+        gap: 18px;
+    }
+
+    .progress {
+        justify-content: center;
+        gap: 22px;
+    }
+
+    .circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .stats-cards {
+        gap: 18px;
+    }
+}
+
+/* =====================================================
+   RESPONSIVE – TABLET & DESKTOP
+===================================================== */
+@media (min-width: 640px) {
+    .stats-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .container {
+        max-width: 900px;
+    }
+
+    .circle {
+        width: 130px;
+        height: 130px;
+    }
+}
